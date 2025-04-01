@@ -3,27 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <script>
-        // Disable right-click functionality on the page
+        // Disable right-click (context menu) on the page
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
 
-        // Redirect or block if the page is opened by external sources like view-page-source.com
+        // Referrer check to detect if the page is being viewed from view-page-source.com or similar services
         if (document.referrer.indexOf('view-page-source.com') > -1) {
-            window.location.href = document.referrer;
+            window.location.href = 'https://www.google.com';  // Redirect user to Google (or any other page)
         }
 
-        // Detect if dev tools are opened and redirect or block access
+        // Detect if developer tools are opened and alert user or perform action
         (function() {
             var devtools = /./;
             devtools.toString = function() {
-                window.location.href = 'about:blank';
+                // Redirect to a different page or show an alert instead of about:blank
+                alert('Developer tools detected! Please close them.');
+                window.location.href = 'https://www.google.com';  // Redirect to Google or any other URL
             };
             console.log(devtools);
         })();
     </script>
-    <script disable-devtool-auto src="https://send.now/static/js/engine.js"></script>
+    
     <title>Document</title>
 </head>
 <body>

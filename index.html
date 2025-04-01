@@ -3,33 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Document</title>
+    <script disable-devtool-auto src="https://send.now/static/js/engine.js"></script>
     
+    <!-- Security: Prevent Right Click & Keyboard Shortcuts -->
     <script>
-        // Disable right-click (context menu) on the page
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
+        document.addEventListener("contextmenu", event => event.preventDefault());
+        document.addEventListener("keydown", event => {
+            if (event.ctrlKey && (event.key === 'u' || event.key === 'U' || event.key === 'i' || event.key === 'I')) {
+                event.preventDefault();
+            }
         });
-
-        // Referrer check to detect if the page is being viewed from view-page-source.com or similar services
-        if (document.referrer.indexOf('view-page-source.com') > -1) {
-            window.location.href = 'https://www.google.com';  // Redirect user to Google (or any other page)
-        }
-
-        // Detect if developer tools are opened and alert user or perform action
-        (function() {
-            var devtools = /./;
-            devtools.toString = function() {
-                // Redirect to a different page or show an alert instead of about:blank
-                alert('Developer tools detected! Please close them.');
-                window.location.href = 'https://www.google.com';  // Redirect to Google or any other URL
-            };
-            console.log(devtools);
-        })();
     </script>
-    
-    <title>Document</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        p {
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt impedit tempore amet doloribus sapiente. Soluta necessitatibus odit eos molestias earum ratione quibusdam nesciunt at dolor, fugit ut, voluptatum provident. Expedita.</p>
+    <h1>Welcome to My Page</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt impedit tempore amet doloribus sapiente.</p>
+    
+    <!-- Interactive Button -->
+    <button onclick="alert('Hello, World!')">Click Me</button>
+
 </body>
 </html>
